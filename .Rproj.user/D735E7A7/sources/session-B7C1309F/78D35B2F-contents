@@ -1,0 +1,59 @@
+---
+title: "Reporte estadística ERGOSTATS"
+subtitle: "Número 1: Muestras complejas y la Encuesta Multiproposito"
+author: 
+    - "Alex Bajaña"
+    - "Andrea Díaz"
+date: "2022-08-18"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    includes:
+       in_header: headr.html
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+
+## ¿Que rayos es la UPM?
+
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+
+El muestreo de la ENEMDU es probabilístico y bi-etápico , donde la Unidad Primaria de Muestreo (UPM) es el conglomerado y la Unidad Secundaria de Muestreo (USM) son las viviendas ocupadas. Se considera a la UPM, la agrupación de viviendas ocupadas que tienen actualmente los conglomerados y van de 30 a 60 viviendas ocupadas, tanto para el área amanzanada como para el área dispersa, próximas entre sí y con límites definidos.
+
+### Estructura del código de identificación del UPM 
+
+El número de identificación de la UPM (conglomerado) se define con cuatro variables y está formado por 12 dígitos de la siguiente manera:
+
+<center>
+
+![](codigo_UPM.png)
+
+</center>
+
+**Fuente:** INEC
+
+<!-- ::: -->
+
+<!-- ::: {} -->
+
+
+El diseño vigente, desde 2017, contempla una actualización dentro de la construcción de la Unidad Primaria de Muestreo (UPM). Para años anteriores, se realizaba la selección de sectores censales bajo un criterio operativo para la ejecución y levantamiento de información del Censo de Población y Vivienda. Sin embargo, en función al crecimiento y disminución de la población en ciertas áreas geográficas a través del tiempo, estas UPM’s pasaron a ser heterogéneas en cuanto al número de viviendas ocupadas que tienen dentro de sus límites, generando así, probabilidades de selección inadecuadas en la segunda etapa. Esta heterogeneidad se solventa al reconstruir y equilibrar el tamaño de las UPM con respecto al número de viviendas ocupadas con el objetivo de obtener conglomerados que cumplan con las necesidades del diseño muestral. Este procedimiento contó con el acompañamiento técnico de KOSTAT y CEPAL
+
+### Referencia:
+
+<https://www.ecuadorencifras.gob.ec/diseno-muestral-2/#:~:text=El%20muestreo%20de%20la%20ENEMDU,Primaria%20de%20Muestreo%20(UPM)>
+
+
+<https://www.ecuadorencifras.gob.ec/documentos/web-inec/EMPLEO/2018/Disenio_Muestral_2018/SIEH%20-MMM.pdf>
+
+<https://www.ecuadorencifras.gob.ec/documentos/web-inec/Multiproposito/201812_Calculo_de_errores_estandar_y_declaracion_de_muestras_complejas_Multi.pdf>
+
+
