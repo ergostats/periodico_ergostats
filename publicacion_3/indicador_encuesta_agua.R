@@ -82,10 +82,10 @@ write_rds(x = diccionario_categorias, file = "diccionario_categorias_agua.rds")
 
 
 indicador_6_1 <- 
-  indicador %>% 
-  select( vi16, vi17, vi26, 
-          ra01e_f, ra03_f, ra04_f, ra022_f,
-          ra023_f, vi17a, vi17b, vi17c) %>% 
+  tabla_agua %>% 
+  # select( vi16, vi17, vi26, 
+  #         ra01e_f, ra03_f, ra04_f, ra022_f,
+  #         ra023_f, vi17a, vi17b, vi17c) %>% 
   mutate(
     # Tipo de suministro
     
@@ -102,7 +102,7 @@ indicador_6_1 <-
          
          # Se identifican pruebas válidas fuente
          
-         validtest_f = case_when(vi26 == 1 & !is.na(ra01e_f) ~ 0
+         validtest_f = case_when(vi26 == 1 & !is.na(ra01e_f) ~ 0,
                                  between(ra01e_f,left = 24,right = 48) & ra03_f == 2 & ra04_f == 2 ~ 1,
                                  vi26 == 2 ~ 2),
     
@@ -129,42 +129,30 @@ indicador_6_1 <-
            vi17a == 3 & vi17b > 30 ~ 3,
            vi17b == 999 & (vi17a != 1 | vi17a != 2) ~ NA_real_),
     
-         agua_cp4 = case_when(vi17c == 1 ~ 1,
-                              vi17c == 3 ~ NA_integer_,
-                              vi17c > 1 ~ 2))
+         agua_cp4 = case_when(vi17c== 1 ~ 1,
+                              vi17c == 3 ~ NA_real_,
+                              vi17c > 1 ~ 2)
+    )
 
 
 # Corrección indicador de agua: -------------------------------------------
 
-# %>% 
-  mutate(manejo_seguro = if_else(condition = agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 1, 
-                                 true = 1, 
-                                 false = 0),
-         básico_1 = if_else(condition = agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 2, 
-                            true = 1, 
-                            false = 0),
-         basico_1 = if_else(condition = agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 2, 
-                            true = 1, 
-                            false = 0),
-         basico_2 = if_else(condition = agua_cp1 == 1 & agua_cp2_f == 2 & agua_cp3 == 1,
-                            true = 1,
-                            false = 0),
-         basico_2 = if_else(condition = agua_cp1 == 1 & agua_cp2_f == 2 & agua_cp3 == 2, 
-                            true = 1, 
-                            false = 0),
-         limitado = if_else(condition = agua_cp1 == 1 & agua_cp3 == 3, 
-                            true = 1, 
-                            false = 0),
-         no_mejorado = if_else(condition = agua_cp1  ==  2, 
-                               true = 1, 
-                               false = 0),
-         superficial = if_else(condition = agua_cp1 == 3, 
-                               true = 1, 
-                               false = 0))
 
+indicador_6_1 <- indicador_6_1 %>% 
+  mutate(
+    
+    i_agua = case_when(agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 1 ~ 1,
+                       agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 2 ~ 2,
+                       agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 2 ~ 2,
+                       agua_cp1 == 1 & agua_cp2_f == 2 & agua_cp3 == 1 ~ 3,
+                       agua_cp1 == 1 & agua_cp2_f == 2 & agua_cp3 == 2 ~ 3,
+                       agua_cp1 == 1 & agua_cp3 == 3 ~ 4,
+                       agua_cp1 == 2 ~ 5,
+                       agua_cp1 == 3 ~ 6))
+    
 
-
-
+indicador_6_1 %>% 
+  count(i_agua)
 
 # Indicador 6.2.1: 
 # Porcentaje de hogares que usa servicios de saneamiento básico -----------
