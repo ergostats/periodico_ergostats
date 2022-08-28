@@ -152,7 +152,7 @@ Además, el documento consultado establece que el tamaño de muestra de la Encue
 
 ### Código utilizado
 
-```{r}
+```{r eval = FALSE}
 
 install.packages("tidyverse")
 

@@ -1671,10 +1671,11 @@ Multipropósito</h2>
 <!-- ::: {} -->
 <div id="código-utilizado" class="section level3">
 <h3>Código utilizado</h3>
-<pre>&gt;code&gt;
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
 
 # Librerías ---------------------------------------------------------------
 
+library(haven)
 library(magrittr)
 library(tidyverse)
 library(srvyr)
@@ -1726,10 +1727,7 @@ base1 %&gt;%
   group_by(area) %&gt;% 
   summarise(ratio = survey_mean(ratio))
 
-survey::svyratio(~x2, ~y2, base1)                                          
-
-</pre>
-<p></code></p>
+survey::svyratio(~x2, ~y2, base1)                                          </code></pre>
 <!-- ::: -->
 <!-- ::: {} -->
 <p>El ratio calculado comprende:</p>
