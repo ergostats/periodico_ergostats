@@ -90,49 +90,65 @@ indicador_6_1 <-
     # Tipo de suministro
     
     tuberia = if_else(condition = vi16 <= 3,
-                           true = 1, 
-                           false = 2),
-         agua_cp1 = case_when(vi17 %in% c(1:3,7,9)   ~ 1,
-                              vi17 %in% c(4,8,10,12) ~ 2,
-                              vi17 %in% c(11,13)     ~ 3,
-                              vi17 %in% c(6,5) & tuberia==1 ~ 1,
-                              vi17 %in% c(6,5) & tuberia==2 ~ 2
-                              ),
+                      true = 1, 
+                      false = 2),
+    agua_cp1 = case_when(vi17 %in% c(1:3,7,9)   ~ 1,
+                         vi17 %in% c(4,8,10,12) ~ 2,
+                         vi17 %in% c(11,13)     ~ 3),
+    agua_cp1 = case_when(
+      vi17 %in% c(6,5) & tuberia==1 ~ 1,
+      vi17 %in% c(6,5) & tuberia==2 ~ 2,
+      TRUE ~ agua_cp1
+    ),
          
-         
-         # Se identifican pruebas válidas fuente
-         
-         validtest_f = case_when(vi26 == 1 & !is.na(ra01e_f) ~ 0,
-                                 between(ra01e_f,left = 24,right = 48) & ra03_f == 2 & ra04_f == 2 ~ 1,
-                                 vi26 == 2 ~ 2),
+    # 2. Calidad del agua -libre de contaminación fecal (bacteria E. coli)
+    # ra01e_f : Horas de incubación entre 24 y 48 horas
+    # ra022_f: La muestra de agua tiene coloración amarilla?
+    # ra023_f: La muestra se hizo fluorescente al exponerse a la luz UV?
+    # ra03_f: Hubo una pérdida de más del 10 % (10ml) del contenido de la muestra de agua?
+    # ra04_f: Estuvo la muestra expuesta a temperaturas menores a 30 grados o mayores a 40 grados 
+    # por más de 4 horas? 
+    
+    # Se identifican pruebas válidas fuente
+    
+    validtest_f = if_else(vi26 == 1 & !is.na(ra01e_f), 0,NA_real_),
+    
+    validtest_f = case_when((between(ra01e_f,left = 24,right = 48) & ra03_f == 2 & ra04_f == 2) ~ 1,
+                            vi26 == 2 ~ 2,
+                            TRUE ~ validtest_f),
     
     # Presencia de coliformes fuente
     
-         coli_f = case_when(
-           validtest_f == 1 & ra023_f == 1 ~ 1,
-           validtest_f == 1 & ra023_f == 2 ~ 2,
-           validtest_f == 1 ~ 0),
+    coli_f = case_when(
+      validtest_f == 1 & ra023_f == 1 ~ 1,
+      validtest_f == 1 & ra023_f == 2 ~ 2,
+      validtest_f == 1 ~ 0),
     
     # Ausencia de E. coli fuente
     
-         agua_cp2_f = case_when(
-           validtest_f == 1 & (ra023_f == 2 | ra022_f == 2) ~ 1,
-           validtest_f == 1 & ra023_f == 1  ~ 2,
-           validtest_f == 1 & ra023_f == 1  ~ 0),
+    agua_cp2_f = if_else(validtest_f == 1,0,NA_real_),
+    
+    agua_cp2_f = case_when(
+      validtest_f == 1 & (ra023_f == 2 | ra022_f == 2) ~ 1,
+      validtest_f == 1 & ra023_f == 1  ~ 2,
+      TRUE ~ agua_cp2_f
+      ),
     
     # Cercanía del suministro
     # Supuesto: agua embotellada cerca para el consumo
     # Se  encuentra fuera de la vivienda, edifico/lote y no sabe a cuanto se encuentra (en minutos) la fuente 
-         agua_cp3 = case_when(
-           vi17a %in% c(1, 2,5,6) ~ 1, 
-           vi17a == 3 & vi17b <= 30 ~ 2,
-           vi17a == 3 & vi17b > 30 ~ 3,
-           vi17b == 999 & (vi17a != 1 | vi17a != 2) ~ NA_real_),
+    agua_cp3 = case_when(
+      vi17a %in% c(1, 2,5,6) ~ 1, 
+      vi17a == 3 & vi17b <= 30 ~ 2,
+      vi17a == 3 & vi17b > 30 ~ 3,
+      vi17b == 999 & (vi17a != 1 | vi17a != 2) ~ NA_real_,
+      TRUE ~ 0),
     
-         agua_cp4 = case_when(vi17c== 1 ~ 1,
-                              vi17c == 3 ~ NA_real_,
-                              vi17c > 1 ~ 2)
-    )
+    agua_cp4 = case_when(vi17c== 1 ~ 1,
+                         vi17c > 1 ~ 2,
+                         vi17c == 3 ~ NA_real_,
+                         TRUE ~ 0)
+)
 
 
 # Corrección indicador de agua: -------------------------------------------
@@ -141,7 +157,7 @@ indicador_6_1 <-
 indicador_6_1 <- indicador_6_1 %>% 
   mutate(
     
-    i_agua = case_when(agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 1 ~ 1,
+    i_agua_c = case_when(agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 1 ~ 1,
                        agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 1 & agua_cp4 == 2 ~ 2,
                        agua_cp1 == 1 & agua_cp2_f == 1 & agua_cp3 == 2 ~ 2,
                        agua_cp1 == 1 & agua_cp2_f == 2 & agua_cp3 == 1 ~ 3,
@@ -151,8 +167,14 @@ indicador_6_1 <- indicador_6_1 %>%
                        agua_cp1 == 3 ~ 6))
     
 
-indicador_6_1 %>% 
-  count(i_agua)
+indicador_agua <- indicador_6_1 %>% 
+  group_by(i_agua,i_agua_c) %>% 
+  summarise(n = sum(fexpper))
+
+indicador_agua %>%
+  ungroup() %>% 
+  mutate(total = sum(n),
+         prop = n/total)
 
 # Indicador 6.2.1: 
 # Porcentaje de hogares que usa servicios de saneamiento básico -----------
