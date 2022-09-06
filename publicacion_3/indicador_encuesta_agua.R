@@ -152,7 +152,7 @@ indicador_6_1 <-
 
 
 # Corrección indicador de agua: -------------------------------------------
-
+# Calculo de las categorias de agua segura y otros:
 
 indicador_6_1 <- indicador_6_1 %>% 
   mutate(
@@ -167,14 +167,54 @@ indicador_6_1 <- indicador_6_1 %>%
                        agua_cp1 == 3 ~ 6))
     
 
+# Comparación del indicador generado por INEC y el replicado por el
+# equipo ERGOSTATS:
+
 indicador_agua <- indicador_6_1 %>% 
   group_by(i_agua,i_agua_c) %>% 
   summarise(n = sum(fexpper))
+
+####################################
+# Revisar las condiciones 1, 2 y 3 #
+####################################
+
+
+# Calculo de la proporción de hogares por sexo del jefe de hogar -------------------
+
+
+tabla_agua %>% 
+  filter(p04 == 1) %>% 
+  
+  # Transofrmación variable por variable, con una misma función:
+  
+  # mutate(p02 = haven::as_factor(p02),
+  #        i_agua = haven::as_factor(i_agua)) %>% 
+  # 
+  # Transofrmación variable por variable, con una misma función:
+  
+  mutate(across(c(p02,i_agua),haven::as_factor)) %>% 
+  
+  group_by(p02,i_agua) %>%
+  summarise(total_jefes = sum(fexpper)) %>% 
+  pivot_wider(names_from = p02,
+              values_from = total_jefes) %>%  
+  mutate(
+    across(c(hombre,mujer),~replace_na(.x,0)),
+    total = hombre + mujer,
+    # Transformar a una sintaxis con across:
+    prop_mujeres = (mujer/total)*100,
+    prop_hombres = (hombre/total)*100
+    )
 
 indicador_agua %>%
   ungroup() %>% 
   mutate(total = sum(n),
          prop = n/total)
+
+
+
+
+tabla_agua
 
 # Indicador 6.2.1: 
 # Porcentaje de hogares que usa servicios de saneamiento básico -----------
