@@ -1,0 +1,27 @@
+---
+title: "Uso de la función maps"
+author: "Andrea Díaz Sánchez"
+date: "2022-08-29"
+output: html_document
+---
+
+
+## Función maps
+
+Útil para aplicar una función a cada elemento de una lista, y en casos más sofisticados se puede especificar el tipo de caracter que se desea obtener.
+
+Especificamente, devuelve una lista en columnas, estableciendo como argumentos: 
+
+map(.x, .f, ...)
+
+x = vectores;
+
+f = fórmula o función, si es un vector de caracteres, un vector numérico o una lista, se convierte en una función extractora. 
+
+En nuestro caso fue útil para crear una listas de  variables(diciconario de variables) y una lista de etiquetas(diccionario de etiquetas). Por tanto, permitió extraer información más detallada sobre las variables tomadas en cuenta acerca de los indicadores ODS de Agua, Saneamiento e Higiene. 
+
+<center>
+
+![](agua.png)
+
+</center>
