@@ -1,0 +1,56 @@
+---
+title: "Libreria Srvyr"
+author: "Andrea Díaz Sánchez"
+date: "2022-09-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Paquete survey
+
+srvyr incorpora partes de la sintaxis de dplyr al análisis de encuestas mediante el paquete de encuestas.
+
+Paquete R que amplía la sintaxis de 'dplyr' para calcular estadísticas de resumen de datos de encuestas con diseños complejos.
+
+srvyr se centra en calcular estadísticas resumidas a partir de datos de encuestas, como la media, el total o el cuantil. Permite el uso de muchos verbos dplyr, como summarize, group_byy mutate, la conveniencia de las funciones de canalización, el estilo de evaluación no estándar de rlang y tipos de retorno más consistentes que el paquete de encuestas.
+
+Útil en erl análisis de datos de una encuesta compleja. Inicialmente se declara las características técnicas de la encuesta. Una vez el paquete reconoce a la encuesta, se pueden utilizar cualquiera de las técnicas de análisis y modelización que nos proporciona el paquete sin necesidad de reespecificar la parte técnica.
+
+Ejemplos de uso: 
+<https://rpubs.com/jaortega/EncuestaR2>
+<https://github.com/gergness/srvyr>
+
+Autores:	Greg Freedman Ellis [aut, cre], Thomas Lumley [ctb], Tomasz Żółtak [ctb], Ben Schneider [aut, ctb], Pavel N. Krivitsky
+
+**Greg Freedman Ellis:** 
+<https://www.linkedin.com/in/gdfe>
+Educación en la universidad de Northwestern: Licenciatura en Economía y Métodos Matemáticos en Ciencias Sociales 
+
+El proyecto srvyr fue creado en enero de 2006.
+
+becario de posgrado en Institute for Health Metrics and Evaluation (sept 2011-jul 2014), Seattle. WA
+
+En la actualidad, es desarrollador de R en Crunch.io, encargado del desarrollo de paquetes R que proporcionan una interfaz de secuencias de comandos para el almacén de datos basado en la nube de Crunch.io y el motor analítico diseñado para datos de encuestas.
+
+
+Thomas Lumley:
+Resultados de traducción
+El paquete srvyr le permite hacer cosas correctamente ponderadas en una sintaxis ordenada y versátil
+
+```{r cars}
+install.packages("srvyr")
+# or for development version
+# remotes::install_github("gergness/srvyr")
+
+
+Referencias:
+<https://mran.microsoft.com/snapshot/2020-04-27/web/packages/srvyr/vignettes/srvyr-vs-survey.html>
+  
+  
+  
+```
+
+
