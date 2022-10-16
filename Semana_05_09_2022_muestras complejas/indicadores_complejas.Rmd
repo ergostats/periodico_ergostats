@@ -1,0 +1,55 @@
+---
+title: "Indicadores en muestras complejas"
+author: "Andrea Díaz Sánchez"
+date: "2022-09-22"
+output:
+  word_document: default
+  html_document: default
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+
+## ¿Qué indicadores se puede obtener de la encuesta multipropósito?
+
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+
+Algunos de los indicadores que se puede obtener del Plan Nacional de Desarrollo (PND) 2017-2021 son:
+
+1.- Los años promedio de escolaridad, el CUal hace referencia al número promedio de años aprobados en instituciones de educación formal, para las personas de 24 y más años de edad.
+En el 2020, el porcentaje de personas que utilizan internet aumentó 11,54 puntos porcentuales a nivel nacional, 10,39 en el área urbana y 14,03 en el área rural.
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+2.- La población matriculada en nivel secundaria, sin importar su edad. La secundaria contempla desde primero hasta sexto curso en el sistema curricular anterior.
+En el 2020, la tasa bruta de matrícula en secundaria fue: 97,86% a nivel nacional, 99,24% en el área urbana y 95,35% en el área rural.
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+3.- El porcentaje de hogares con acceso a internet expresado como porcentaje del total de hogares.
+En el 2020, el porcentaje de personas que utilizan internet aumentó 11,54 puntos porcentuales a nivel nacional, 10,39 en el área urbana y 14,03 en el área rural.
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+4.- El porcentaje de la población de 12 y más años de edad que realiza ejercicios o deporte en su tiempo libre, más de 3.5 horas a la semana. Expresado como porcentaje de la población total del mismo grupo.En el 2020, el porcentaje de personas que realizan actividad física disminuyó 0,11 puntos porcentuales a nivel nacional y 0,84 en el área urbana, y aumentó 1,51 puntos en el área rural.
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+5.- El número de personas de 5 y más años de edad que ha usado Internet en los últimos 12 meses, desde cualquier lugar; expresado como porcentaje del total de personas del mismo rango de edad.En el 2020, el porcentaje de personas que utilizan internet aumentó 11,54 puntos porcentuales a nivel nacional, 10,39 en el área urbana y 14,03 en el área rural.
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+6.- El número de hogares que disponen de computadora de escritorio, laptop o tablet; expresado como porcentaje del total de hogares. En el 2020, el porcentaje de hogares con al menos un computador aumentó: 3,35 puntos porcentuales a nivel nacional, 3,05 en el área urbana, y 4,80 puntos en el área rural.
+
+

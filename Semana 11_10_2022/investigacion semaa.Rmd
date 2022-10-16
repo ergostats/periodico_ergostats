@@ -1,0 +1,61 @@
+---
+title: "investigacion_1_octubre"
+author: "Andrea Díaz Sánchez"
+date: "2022-10-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Modelos de regresión en encuestas
+
+Los métodos cuantitativos constituyen una útil herramienta para la investigación y la toma de decisiones.
+
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+
+### Ejemplos:
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->
+
+*Regresión lineal multiple*
+
+Análisis de la EDUCACIÓN E INGRESO COMO PREDICTORES DE LA ESPERANZA DE VIDA: EVIDENCIAS DE UN ANÁLISIS DE REGRESIÓN APLICADO A INDICADORES DE DESARROLLO HUMANO.
+
+Variables 
+
+Variable y: esperanza de vida al nacer
+Variables x: el PIB per cápita y la Tasa de matriculación combinada
+
+Base de datos: Informe sobre desarrollo humano 1998 ( Programa de las Naciones Unidas para el Desarrollo) 
+
+Referencia:
+<https://www.redalyc.org/pdf/153/15309405.pdf>
+
+
+*Modelo Logístico*
+
+Determinantes de la Pobreza en Colombia: un análisis del efecto de la “raza” en la 
+entrada y salida de la pobreza
+
+
+Variables 
+
+Variable y: escapa de la pobreza (La pobreza se definió a través de dos métodos distintos, un Índice de Riqueza  multidimensional y la Línea de Pobreza)
+
+Variables x: raza, edad, sabe leer, genero del jefe d ehogar, estado civil, migracion, zon,a choque climatico, choque de separación y choque de quiebra
+
+La fuente de los datos para la presente investigación es la Encuesta Longitudinal  Colombiana de la 
+Universidad de los Andes (ELCA)
+
+Referencia:
+<https://repositorio.uniandes.edu.co/bitstream/handle/1992/15193/u753811.pdf?sequence=1>
+
+<!-- :::: {style="display: flex;"} -->
+
+<!-- ::: {} -->

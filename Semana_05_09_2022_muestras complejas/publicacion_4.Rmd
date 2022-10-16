@@ -1,6 +1,6 @@
 ---
 title: "Reporte estadística ERGOSTATS"
-subtitle: "Número 1: Muestras complejas y la Encuesta Multiproposito"
+subtitle: "Número 1: Muestras complejas"
 author: 
     - "Alex Bajaña"
     - "Andrea Díaz"
@@ -47,5 +47,3 @@ class(dclus1)
 
 
 ```
-
-##
